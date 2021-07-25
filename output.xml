@@ -1,0 +1,922 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0.3 (Python 3.8.6 on win32)" generated="20210725 14:58:04.108" rpa="false" schemaversion="2">
+<suite id="s1" name="Robot Api Test" source="C:\Users\WaseemS\Documents\robot_api_test">
+<suite id="s1-s1" name="Delete Suite" source="C:\Users\WaseemS\Documents\robot_api_test\delete_suite">
+<kw name="Print Message" type="SETUP">
+<arg>Hello to post suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:04.142" level="INFO">Hello to post suite</msg>
+<status status="PASS" starttime="20210725 14:58:04.142" endtime="20210725 14:58:04.142"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:04.141" endtime="20210725 14:58:04.142"/>
+</kw>
+<suite id="s1-s1-s1" name="Delete Tests" source="C:\Users\WaseemS\Documents\robot_api_test\delete_suite\delete_tests.robot">
+<test id="s1-s1-s1-t1" name="Test Case 1">
+<kw name="Run Delete Pytest">
+<var>${result}</var>
+<arg>delete_suite//test_delete_requests.py</arg>
+<kw name="Run" library="OperatingSystem">
+<var>${output}</var>
+<arg>pytest ${my_file}</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<msg timestamp="20210725 14:58:04.148" level="INFO">Running command 'pytest delete_suite//test_delete_requests.py 2&gt;&amp;1'.</msg>
+<msg timestamp="20210725 14:58:05.262" level="INFO">${output} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:04.146" endtime="20210725 14:58:05.263"/>
+</kw>
+<msg timestamp="20210725 14:58:05.263" level="INFO">${result} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:04.145" endtime="20210725 14:58:05.263"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:05.264" level="INFO">============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 1 item
+
+delete_suite\test_delete_requests.py F                                   [100%]
+
+================================== FAILURES ===================================
+______________________________ test_delete_user _______________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_delete_user(url):
+        response = requests.delete(url+'/user/2')
+        assert response.status_code == 204
+        print("delete user : ", response.status_code)
+        response = requests.get(url + '/users/2')
+        print(response.status_code)
+&gt;       assert response.status_code == 404
+E       assert 200 == 404
+E        +  where 200 = &lt;Response [200]&gt;.status_code
+
+delete_suite\test_delete_requests.py:17: AssertionError
+---------------------------- Captured stdout call -----------------------------
+delete user :  204
+200
+============================== warnings summary ===============================
+delete_suite\test_delete_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\delete_suite\test_delete_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED delete_suite/test_delete_requests.py::test_delete_user - assert 200 ==...
+======================== 1 failed, 1 warning in 0.81s =========================</msg>
+<status status="PASS" starttime="20210725 14:58:05.263" endtime="20210725 14:58:05.264"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${result}</arg>
+<arg>${failure}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<msg timestamp="20210725 14:58:05.264" level="FAIL">'============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 1 item
+
+delete_suite\test_delete_requests.py F                                   [100%]
+
+================================== FAILURES ===================================
+______________________________ test_delete_user _______________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_delete_user(url):
+        response = requests.delete(url+'/user/2')
+        assert response.status_code == 204
+        print("delete user : ", response.status_code)
+        response = requests.get(url + '/users/2')
+        print(response.status_code)
+&gt;       assert response.status_code == 404
+E       assert 200 == 404
+E        +  where 200 = &lt;Response [200]&gt;.status_code
+
+delete_suite\test_delete_requests.py:17: AssertionError
+---------------------------- Captured stdout call -----------------------------
+delete user :  204
+200
+============================== warnings summary ===============================
+delete_suite\test_delete_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\delete_suite\test_delete_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED delete_suite/test_delete_requests.py::test_delete_user - assert 200 ==...
+======================== 1 failed, 1 warning in 0.81s =========================' contains '================================== FAILURES ==================================='</msg>
+<status status="FAIL" starttime="20210725 14:58:05.264" endtime="20210725 14:58:05.265"/>
+</kw>
+<status status="FAIL" starttime="20210725 14:58:04.145" endtime="20210725 14:58:05.265">'============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 1 item
+
+delete_suite\test_delete_requests.py F                                   [100%]
+
+================================== FAILURES ===================================
+______________________________ test_delete_user _______________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_delete_user(url):
+        response = requests.delete(url+'/user/2')
+    [ Message content over the limit has been removed. ]
+...------------------------ Captured stdout call -----------------------------
+delete user :  204
+200
+============================== warnings summary ===============================
+delete_suite\test_delete_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\delete_suite\test_delete_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED delete_suite/test_delete_requests.py::test_delete_user - assert 200 ==...
+======================== 1 failed, 1 warning in 0.81s =========================' contains '================================== FAILURES ==================================='</status>
+</test>
+<status status="FAIL" starttime="20210725 14:58:04.142" endtime="20210725 14:58:05.267"/>
+</suite>
+<kw name="Print Message" type="TEARDOWN">
+<arg>bye bye post suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:05.270" level="INFO">bye bye post suite</msg>
+<status status="PASS" starttime="20210725 14:58:05.270" endtime="20210725 14:58:05.270"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:05.269" endtime="20210725 14:58:05.270"/>
+</kw>
+<status status="FAIL" starttime="20210725 14:58:04.132" endtime="20210725 14:58:05.270"/>
+</suite>
+<suite id="s1-s2" name="Get Suite" source="C:\Users\WaseemS\Documents\robot_api_test\get_suite">
+<kw name="Print Message" type="SETUP">
+<arg>Hello to get suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:05.274" level="INFO">Hello to get suite</msg>
+<status status="PASS" starttime="20210725 14:58:05.274" endtime="20210725 14:58:05.274"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:05.274" endtime="20210725 14:58:05.274"/>
+</kw>
+<suite id="s1-s2-s1" name="Get Tests" source="C:\Users\WaseemS\Documents\robot_api_test\get_suite\get_tests.robot">
+<test id="s1-s2-s1-t1" name="Test Case 1">
+<kw name="Run Get Pytest">
+<var>${result}</var>
+<arg>get_suite//test_get_requests.py</arg>
+<kw name="Run" library="OperatingSystem">
+<var>${output}</var>
+<arg>pytest ${my_file}</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<msg timestamp="20210725 14:58:05.280" level="INFO">Running command 'pytest get_suite//test_get_requests.py 2&gt;&amp;1'.</msg>
+<msg timestamp="20210725 14:58:10.644" level="INFO">${output} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:05.278" endtime="20210725 14:58:10.644"/>
+</kw>
+<msg timestamp="20210725 14:58:10.644" level="INFO">${result} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:05.278" endtime="20210725 14:58:10.644"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:10.645" level="INFO">============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 7 items
+
+get_suite\test_get_requests.py .......                                   [100%]
+
+============================== warnings summary ===============================
+get_suite\test_get_requests.py:22
+  C:\Users\WaseemS\Documents\robot_api_test\get_suite\test_get_requests.py:22: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+get_suite\test_get_requests.py:38
+  C:\Users\WaseemS\Documents\robot_api_test\get_suite\test_get_requests.py:38: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+get_suite\test_get_requests.py:52
+  C:\Users\WaseemS\Documents\robot_api_test\get_suite\test_get_requests.py:52: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+get_suite\test_get_requests.py:59
+  C:\Users\WaseemS\Documents\robot_api_test\get_suite\test_get_requests.py:59: PytestUnknownMarkWarning: Unknown pytest.mark.resource - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.resource
+
+get_suite\test_get_requests.py:74
+  C:\Users\WaseemS\Documents\robot_api_test\get_suite\test_get_requests.py:74: PytestUnknownMarkWarning: Unknown pytest.mark.resource - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.resource
+
+get_suite\test_get_requests.py:88
+  C:\Users\WaseemS\Documents\robot_api_test\get_suite\test_get_requests.py:88: PytestUnknownMarkWarning: Unknown pytest.mark.resource - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.resource
+
+get_suite\test_get_requests.py:95
+  C:\Users\WaseemS\Documents\robot_api_test\get_suite\test_get_requests.py:95: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+======================== 7 passed, 7 warnings in 5.04s ========================</msg>
+<status status="PASS" starttime="20210725 14:58:10.645" endtime="20210725 14:58:10.645"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${result}</arg>
+<arg>${failure}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<status status="PASS" starttime="20210725 14:58:10.646" endtime="20210725 14:58:10.646"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:05.277" endtime="20210725 14:58:10.647"/>
+</test>
+<status status="PASS" starttime="20210725 14:58:05.274" endtime="20210725 14:58:10.647"/>
+</suite>
+<kw name="Print Message" type="TEARDOWN">
+<arg>bye bye get suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:10.650" level="INFO">bye bye get suite</msg>
+<status status="PASS" starttime="20210725 14:58:10.650" endtime="20210725 14:58:10.650"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:10.649" endtime="20210725 14:58:10.650"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:05.271" endtime="20210725 14:58:10.650"/>
+</suite>
+<suite id="s1-s3" name="Patch Suite" source="C:\Users\WaseemS\Documents\robot_api_test\patch_suite">
+<kw name="Print Message" type="SETUP">
+<arg>Hello to post suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:10.654" level="INFO">Hello to post suite</msg>
+<status status="PASS" starttime="20210725 14:58:10.654" endtime="20210725 14:58:10.654"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:10.654" endtime="20210725 14:58:10.654"/>
+</kw>
+<suite id="s1-s3-s1" name="Patch Tests" source="C:\Users\WaseemS\Documents\robot_api_test\patch_suite\patch_tests.robot">
+<test id="s1-s3-s1-t1" name="Test Case 1">
+<kw name="Run Patch Pytest">
+<var>${result}</var>
+<arg>patch_suite//test_patch_requests.py</arg>
+<kw name="Run" library="OperatingSystem">
+<var>${output}</var>
+<arg>pytest ${my_file}</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<msg timestamp="20210725 14:58:10.659" level="INFO">Running command 'pytest patch_suite//test_patch_requests.py 2&gt;&amp;1'.</msg>
+<msg timestamp="20210725 14:58:11.700" level="INFO">${output} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:10.657" endtime="20210725 14:58:11.700"/>
+</kw>
+<msg timestamp="20210725 14:58:11.700" level="INFO">${result} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:10.657" endtime="20210725 14:58:11.700"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:11.701" level="INFO">============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 1 item
+
+patch_suite\test_patch_requests.py F                                     [100%]
+
+================================== FAILURES ===================================
+___________________________ test_patch_update_user ____________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_patch_update_user(url):
+        data = {"name": "morpheus", "job": "zion resident"}
+        response = requests.patch(url+'/users/2', data)
+        assert response.status_code == 200
+        print("patch update user : ", response.status_code)
+        response = requests.get(url + '/users?2')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"name":"morpheus", "job":"zion resident"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000022181701080&gt;('"name":"morpheus", "job":"zion resident"')
+E        +    where &lt;built-in method find of str object at 0x0000022181701080&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+patch_suite\test_patch_requests.py:18: AssertionError
+---------------------------- Captured stdout call -----------------------------
+patch update user :  200
+200
+============================== warnings summary ===============================
+patch_suite\test_patch_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\patch_suite\test_patch_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED patch_suite/test_patch_requests.py::test_patch_update_user - assert -1...
+======================== 1 failed, 1 warning in 0.73s =========================</msg>
+<status status="PASS" starttime="20210725 14:58:11.701" endtime="20210725 14:58:11.701"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${result}</arg>
+<arg>${failure}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<msg timestamp="20210725 14:58:11.702" level="FAIL">'============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 1 item
+
+patch_suite\test_patch_requests.py F                                     [100%]
+
+================================== FAILURES ===================================
+___________________________ test_patch_update_user ____________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_patch_update_user(url):
+        data = {"name": "morpheus", "job": "zion resident"}
+        response = requests.patch(url+'/users/2', data)
+        assert response.status_code == 200
+        print("patch update user : ", response.status_code)
+        response = requests.get(url + '/users?2')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"name":"morpheus", "job":"zion resident"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000022181701080&gt;('"name":"morpheus", "job":"zion resident"')
+E        +    where &lt;built-in method find of str object at 0x0000022181701080&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+patch_suite\test_patch_requests.py:18: AssertionError
+---------------------------- Captured stdout call -----------------------------
+patch update user :  200
+200
+============================== warnings summary ===============================
+patch_suite\test_patch_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\patch_suite\test_patch_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED patch_suite/test_patch_requests.py::test_patch_update_user - assert -1...
+======================== 1 failed, 1 warning in 0.73s =========================' contains '================================== FAILURES ==================================='</msg>
+<status status="FAIL" starttime="20210725 14:58:11.702" endtime="20210725 14:58:11.702"/>
+</kw>
+<status status="FAIL" starttime="20210725 14:58:10.657" endtime="20210725 14:58:11.703">'============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 1 item
+
+patch_suite\test_patch_requests.py F                                     [100%]
+
+================================== FAILURES ===================================
+___________________________ test_patch_update_user ____________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_patch_update_user(url):
+        data = {"name": "morpheus", "job": "zion resident"}
+    [ Message content over the limit has been removed. ]
+...------------------------ Captured stdout call -----------------------------
+patch update user :  200
+200
+============================== warnings summary ===============================
+patch_suite\test_patch_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\patch_suite\test_patch_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED patch_suite/test_patch_requests.py::test_patch_update_user - assert -1...
+======================== 1 failed, 1 warning in 0.73s =========================' contains '================================== FAILURES ==================================='</status>
+</test>
+<status status="FAIL" starttime="20210725 14:58:10.654" endtime="20210725 14:58:11.705"/>
+</suite>
+<kw name="Print Message" type="TEARDOWN">
+<arg>bye bye post suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:11.708" level="INFO">bye bye post suite</msg>
+<status status="PASS" starttime="20210725 14:58:11.708" endtime="20210725 14:58:11.708"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:11.708" endtime="20210725 14:58:11.708"/>
+</kw>
+<status status="FAIL" starttime="20210725 14:58:10.651" endtime="20210725 14:58:11.708"/>
+</suite>
+<suite id="s1-s4" name="Post Suite" source="C:\Users\WaseemS\Documents\robot_api_test\post_suite">
+<kw name="Print Message" type="SETUP">
+<arg>Hello to post suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:11.713" level="INFO">Hello to post suite</msg>
+<status status="PASS" starttime="20210725 14:58:11.712" endtime="20210725 14:58:11.713"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:11.712" endtime="20210725 14:58:11.713"/>
+</kw>
+<suite id="s1-s4-s1" name="Post Tests" source="C:\Users\WaseemS\Documents\robot_api_test\post_suite\post_tests.robot">
+<test id="s1-s4-s1-t1" name="Test Case 1">
+<kw name="Run Post Pytest">
+<var>${result}</var>
+<arg>post_suite//test_post_requests.py</arg>
+<kw name="Run" library="OperatingSystem">
+<var>${output}</var>
+<arg>pytest ${my_file}</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<msg timestamp="20210725 14:58:11.718" level="INFO">Running command 'pytest post_suite//test_post_requests.py 2&gt;&amp;1'.</msg>
+<msg timestamp="20210725 14:58:15.176" level="INFO">${output} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:11.716" endtime="20210725 14:58:15.176"/>
+</kw>
+<msg timestamp="20210725 14:58:15.176" level="INFO">${result} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:11.716" endtime="20210725 14:58:15.176"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:15.177" level="INFO">============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 5 items
+
+post_suite\test_post_requests.py FF.F.                                   [100%]
+
+================================== FAILURES ===================================
+____________________________ test_post_create_user ____________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_post_create_user(url):
+        data = {"name": "morpheus", "job": "leader"}
+        response = requests.post(url+'/users', data)
+        assert response.status_code == 201
+        assert response.request.body.find("morpheus") != -1
+        assert response.request.body.find("leader") != -1
+        print("post create user : ", response.status_code)
+        response = requests.get(url+'/users?name=morpheus')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"name":"morpheus", "job":"leader"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000025FA5A4D090&gt;('"name":"morpheus", "job":"leader"')
+E        +    where &lt;built-in method find of str object at 0x0000025FA5A4D090&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+post_suite\test_post_requests.py:20: AssertionError
+---------------------------- Captured stdout call -----------------------------
+post create user :  201
+200
+_____________________________ test_post_register ______________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.register
+    def test_post_register(url):
+        data = {'email': 'eve.holt@reqres.in', "password": "pistol"}
+        response = requests.post(url+'/register', data)
+        assert response.status_code == 200
+        print("post register : ", response.status_code)
+        response = requests.get(url + '/register?email=eve.holt@reqres.in')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"email":"eve.holt@reqres.in", "password":"pistol"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000025FA60054F0&gt;('"email":"eve.holt@reqres.in", "password":"pistol"')
+E        +    where &lt;built-in method find of str object at 0x0000025FA60054F0&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1",...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1",...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","p...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","p...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+post_suite\test_post_requests.py:31: AssertionError
+---------------------------- Captured stdout call -----------------------------
+post register :  200
+200
+_______________________________ test_post_login _______________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.login
+    def test_post_login(url):
+        data = {"email": 'eve.holt@reqres.in', "password": "cityslicka"}
+        response = requests.post(url+'/login', data)
+        assert response.status_code == 200
+        print("post login : ", response.status_code)
+        response = requests.get(url + '/login?email=eve.holt@reqres.in')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"email":"eve.holt@reqres.in", "password":"cityslicka"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000025FA34E2560&gt;('"email":"eve.holt@reqres.in", "password":"cityslicka"')
+E        +    where &lt;built-in method find of str object at 0x0000025FA34E2560&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1",...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1",...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","p...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","p...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+post_suite\test_post_requests.py:53: AssertionError
+---------------------------- Captured stdout call -----------------------------
+post login :  200
+200
+============================== warnings summary ===============================
+post_suite\test_post_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+post_suite\test_post_requests.py:23
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:23: PytestUnknownMarkWarning: Unknown pytest.mark.register - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.register
+
+post_suite\test_post_requests.py:34
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:34: PytestUnknownMarkWarning: Unknown pytest.mark.register - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.register
+
+post_suite\test_post_requests.py:45
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:45: PytestUnknownMarkWarning: Unknown pytest.mark.login - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.login
+
+post_suite\test_post_requests.py:56
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:56: PytestUnknownMarkWarning: Unknown pytest.mark.login - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.login
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED post_suite/test_post_requests.py::test_post_create_user - assert -1 != -1
+FAILED post_suite/test_post_requests.py::test_post_register - assert -1 != -1
+FAILED post_suite/test_post_requests.py::test_post_login - assert -1 != -1
+=================== 3 failed, 2 passed, 5 warnings in 3.14s ===================</msg>
+<status status="PASS" starttime="20210725 14:58:15.177" endtime="20210725 14:58:15.177"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${result}</arg>
+<arg>${failure}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<msg timestamp="20210725 14:58:15.178" level="FAIL">'============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 5 items
+
+post_suite\test_post_requests.py FF.F.                                   [100%]
+
+================================== FAILURES ===================================
+____________________________ test_post_create_user ____________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_post_create_user(url):
+        data = {"name": "morpheus", "job": "leader"}
+        response = requests.post(url+'/users', data)
+        assert response.status_code == 201
+        assert response.request.body.find("morpheus") != -1
+        assert response.request.body.find("leader") != -1
+        print("post create user : ", response.status_code)
+        response = requests.get(url+'/users?name=morpheus')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"name":"morpheus", "job":"leader"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000025FA5A4D090&gt;('"name":"morpheus", "job":"leader"')
+E        +    where &lt;built-in method find of str object at 0x0000025FA5A4D090&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+post_suite\test_post_requests.py:20: AssertionError
+---------------------------- Captured stdout call -----------------------------
+post create user :  201
+200
+_____________________________ test_post_register ______________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.register
+    def test_post_register(url):
+        data = {'email': 'eve.holt@reqres.in', "password": "pistol"}
+        response = requests.post(url+'/register', data)
+        assert response.status_code == 200
+        print("post register : ", response.status_code)
+        response = requests.get(url + '/register?email=eve.holt@reqres.in')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"email":"eve.holt@reqres.in", "password":"pistol"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000025FA60054F0&gt;('"email":"eve.holt@reqres.in", "password":"pistol"')
+E        +    where &lt;built-in method find of str object at 0x0000025FA60054F0&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1",...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1",...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","p...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","p...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+post_suite\test_post_requests.py:31: AssertionError
+---------------------------- Captured stdout call -----------------------------
+post register :  200
+200
+_______________________________ test_post_login _______________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.login
+    def test_post_login(url):
+        data = {"email": 'eve.holt@reqres.in', "password": "cityslicka"}
+        response = requests.post(url+'/login', data)
+        assert response.status_code == 200
+        print("post login : ", response.status_code)
+        response = requests.get(url + '/login?email=eve.holt@reqres.in')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"email":"eve.holt@reqres.in", "password":"cityslicka"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000025FA34E2560&gt;('"email":"eve.holt@reqres.in", "password":"cityslicka"')
+E        +    where &lt;built-in method find of str object at 0x0000025FA34E2560&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1",...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1",...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","p...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"name":"cerulean","year":2000,"color":"#98B2D1","p...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+post_suite\test_post_requests.py:53: AssertionError
+---------------------------- Captured stdout call -----------------------------
+post login :  200
+200
+============================== warnings summary ===============================
+post_suite\test_post_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+post_suite\test_post_requests.py:23
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:23: PytestUnknownMarkWarning: Unknown pytest.mark.register - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.register
+
+post_suite\test_post_requests.py:34
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:34: PytestUnknownMarkWarning: Unknown pytest.mark.register - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.register
+
+post_suite\test_post_requests.py:45
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:45: PytestUnknownMarkWarning: Unknown pytest.mark.login - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.login
+
+post_suite\test_post_requests.py:56
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:56: PytestUnknownMarkWarning: Unknown pytest.mark.login - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.login
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED post_suite/test_post_requests.py::test_post_create_user - assert -1 != -1
+FAILED post_suite/test_post_requests.py::test_post_register - assert -1 != -1
+FAILED post_suite/test_post_requests.py::test_post_login - assert -1 != -1
+=================== 3 failed, 2 passed, 5 warnings in 3.14s ===================' contains '================================== FAILURES ==================================='</msg>
+<status status="FAIL" starttime="20210725 14:58:15.178" endtime="20210725 14:58:15.178"/>
+</kw>
+<status status="FAIL" starttime="20210725 14:58:11.715" endtime="20210725 14:58:15.179">'============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 5 items
+
+post_suite\test_post_requests.py FF.F.                                   [100%]
+
+================================== FAILURES ===================================
+____________________________ test_post_create_user ____________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_post_create_user(url):
+        data = {"name": "morpheus", "job": "leader"}
+    [ Message content over the limit has been removed. ]
+...this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.login
+
+post_suite\test_post_requests.py:56
+  C:\Users\WaseemS\Documents\robot_api_test\post_suite\test_post_requests.py:56: PytestUnknownMarkWarning: Unknown pytest.mark.login - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.login
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED post_suite/test_post_requests.py::test_post_create_user - assert -1 != -1
+FAILED post_suite/test_post_requests.py::test_post_register - assert -1 != -1
+FAILED post_suite/test_post_requests.py::test_post_login - assert -1 != -1
+=================== 3 failed, 2 passed, 5 warnings in 3.14s ===================' contains '================================== FAILURES ==================================='</status>
+</test>
+<status status="FAIL" starttime="20210725 14:58:11.713" endtime="20210725 14:58:15.183"/>
+</suite>
+<kw name="Print Message" type="TEARDOWN">
+<arg>bye bye post suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:15.184" level="INFO">bye bye post suite</msg>
+<status status="PASS" starttime="20210725 14:58:15.184" endtime="20210725 14:58:15.184"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:15.184" endtime="20210725 14:58:15.184"/>
+</kw>
+<status status="FAIL" starttime="20210725 14:58:11.710" endtime="20210725 14:58:15.184"/>
+</suite>
+<suite id="s1-s5" name="Put Suite" source="C:\Users\WaseemS\Documents\robot_api_test\put_suite">
+<kw name="Print Message" type="SETUP">
+<arg>Hello to post suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:15.188" level="INFO">Hello to post suite</msg>
+<status status="PASS" starttime="20210725 14:58:15.188" endtime="20210725 14:58:15.188"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:15.188" endtime="20210725 14:58:15.188"/>
+</kw>
+<suite id="s1-s5-s1" name="Put Tests" source="C:\Users\WaseemS\Documents\robot_api_test\put_suite\put_tests.robot">
+<test id="s1-s5-s1-t1" name="Test Case 1">
+<kw name="Run Put Pytest">
+<var>${result}</var>
+<arg>put_suite//test_put_requests.py</arg>
+<kw name="Run" library="OperatingSystem">
+<var>${output}</var>
+<arg>pytest ${my_file}</arg>
+<doc>Runs the given command in the system and returns the output.</doc>
+<msg timestamp="20210725 14:58:15.194" level="INFO">Running command 'pytest put_suite//test_put_requests.py 2&gt;&amp;1'.</msg>
+<msg timestamp="20210725 14:58:16.245" level="INFO">${output} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:15.192" endtime="20210725 14:58:16.245"/>
+</kw>
+<msg timestamp="20210725 14:58:16.245" level="INFO">${result} = ============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_tes...</msg>
+<status status="PASS" starttime="20210725 14:58:15.191" endtime="20210725 14:58:16.245"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:16.246" level="INFO">============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 1 item
+
+put_suite\test_put_requests.py F                                         [100%]
+
+================================== FAILURES ===================================
+____________________________ test_put_update_user _____________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_put_update_user(url):
+        data = {"name": "morpheus", "job": "zion resident"}
+        response = requests.put(url+'/users/2', data)
+        assert response.status_code == 200
+        print("put update user : ", response.status_code)
+        response = requests.get(url + '/users?2')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"name":"morpheus", "job":"zion resident"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000029B3A26EC30&gt;('"name":"morpheus", "job":"zion resident"')
+E        +    where &lt;built-in method find of str object at 0x0000029B3A26EC30&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+put_suite\test_put_requests.py:18: AssertionError
+---------------------------- Captured stdout call -----------------------------
+put update user :  200
+200
+============================== warnings summary ===============================
+put_suite\test_put_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\put_suite\test_put_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED put_suite/test_put_requests.py::test_put_update_user - assert -1 != -1
+======================== 1 failed, 1 warning in 0.74s =========================</msg>
+<status status="PASS" starttime="20210725 14:58:16.246" endtime="20210725 14:58:16.246"/>
+</kw>
+<kw name="Should Not Contain" library="BuiltIn">
+<arg>${result}</arg>
+<arg>${failure}</arg>
+<doc>Fails if ``container`` contains ``item`` one or more times.</doc>
+<msg timestamp="20210725 14:58:16.247" level="FAIL">'============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 1 item
+
+put_suite\test_put_requests.py F                                         [100%]
+
+================================== FAILURES ===================================
+____________________________ test_put_update_user _____________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_put_update_user(url):
+        data = {"name": "morpheus", "job": "zion resident"}
+        response = requests.put(url+'/users/2', data)
+        assert response.status_code == 200
+        print("put update user : ", response.status_code)
+        response = requests.get(url + '/users?2')
+        print(response.status_code)
+&gt;       assert str(response.content).find('"name":"morpheus", "job":"zion resident"') != -1
+E       assert -1 != -1
+E        +  where -1 = &lt;built-in method find of str object at 0x0000029B3A26EC30&gt;('"name":"morpheus", "job":"zion resident"')
+E        +    where &lt;built-in method find of str object at 0x0000029B3A26EC30&gt; = 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\''.find
+E        +      where 'b\'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"G...ps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}\'' = str(b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}')
+E        +        where b'{"page":1,"per_page":6,"total":12,"total_pages":2,"data":[{"id":1,"email":"george.bluth@reqres.in","first_name":"Geo...ttps://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}' = &lt;Response [200]&gt;.content
+
+put_suite\test_put_requests.py:18: AssertionError
+---------------------------- Captured stdout call -----------------------------
+put update user :  200
+200
+============================== warnings summary ===============================
+put_suite\test_put_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\put_suite\test_put_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED put_suite/test_put_requests.py::test_put_update_user - assert -1 != -1
+======================== 1 failed, 1 warning in 0.74s =========================' contains '================================== FAILURES ==================================='</msg>
+<status status="FAIL" starttime="20210725 14:58:16.247" endtime="20210725 14:58:16.247"/>
+</kw>
+<status status="FAIL" starttime="20210725 14:58:15.191" endtime="20210725 14:58:16.248">'============================= test session starts =============================
+platform win32 -- Python 3.8.6, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+rootdir: C:\Users\WaseemS\Documents\robot_api_test
+plugins: forked-1.3.0, xdist-2.3.0
+collected 1 item
+
+put_suite\test_put_requests.py F                                         [100%]
+
+================================== FAILURES ===================================
+____________________________ test_put_update_user _____________________________
+
+url = 'https://reqres.in/api'
+
+    @pytest.mark.users
+    def test_put_update_user(url):
+        data = {"name": "morpheus", "job": "zion resident"}
+    [ Message content over the limit has been removed. ]
+---------------------------- Captured stdout call -----------------------------
+put update user :  200
+200
+============================== warnings summary ===============================
+put_suite\test_put_requests.py:10
+  C:\Users\WaseemS\Documents\robot_api_test\put_suite\test_put_requests.py:10: PytestUnknownMarkWarning: Unknown pytest.mark.users - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/mark.html
+    @pytest.mark.users
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED put_suite/test_put_requests.py::test_put_update_user - assert -1 != -1
+======================== 1 failed, 1 warning in 0.74s =========================' contains '================================== FAILURES ==================================='</status>
+</test>
+<status status="FAIL" starttime="20210725 14:58:15.188" endtime="20210725 14:58:16.250"/>
+</suite>
+<kw name="Print Message" type="TEARDOWN">
+<arg>bye bye post suite</arg>
+<kw name="Log" library="BuiltIn">
+<arg>${message}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20210725 14:58:16.252" level="INFO">bye bye post suite</msg>
+<status status="PASS" starttime="20210725 14:58:16.252" endtime="20210725 14:58:16.252"/>
+</kw>
+<status status="PASS" starttime="20210725 14:58:16.252" endtime="20210725 14:58:16.253"/>
+</kw>
+<status status="FAIL" starttime="20210725 14:58:15.186" endtime="20210725 14:58:16.253"/>
+</suite>
+<status status="FAIL" starttime="20210725 14:58:04.109" endtime="20210725 14:58:16.255"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="4" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="4" skip="0" id="s1" name="Robot Api Test">Robot Api Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Delete Suite">Robot Api Test.Delete Suite</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Delete Tests">Robot Api Test.Delete Suite.Delete Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2" name="Get Suite">Robot Api Test.Get Suite</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s2-s1" name="Get Tests">Robot Api Test.Get Suite.Get Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s3" name="Patch Suite">Robot Api Test.Patch Suite</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s3-s1" name="Patch Tests">Robot Api Test.Patch Suite.Patch Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s4" name="Post Suite">Robot Api Test.Post Suite</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s4-s1" name="Post Tests">Robot Api Test.Post Suite.Post Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s5" name="Put Suite">Robot Api Test.Put Suite</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s5-s1" name="Put Tests">Robot Api Test.Put Suite.Put Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
